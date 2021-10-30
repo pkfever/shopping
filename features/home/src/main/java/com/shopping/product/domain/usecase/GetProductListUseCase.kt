@@ -12,6 +12,10 @@ class GetProductListUseCase(private val productRepository: ProductRepository) {
         data class Error(val errorMsg: String) : Result
     }
 
+
+    /*
+        Handle app logics in here before sending the data to presnenter layer
+     */
     suspend fun execute(): Result {
 
         val resource = productRepository.getProducts()

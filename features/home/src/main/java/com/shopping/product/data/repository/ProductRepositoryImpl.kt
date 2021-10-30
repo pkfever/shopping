@@ -7,6 +7,10 @@ import com.shopping.product.utils.Resource
 
 class ProductRepositoryImpl(private val productDataSource: ProductDataSource) : ProductRepository {
 
+    /*
+     Here convert response to domain objects
+     */
+
     override suspend fun getProducts(): Resource<List<Product>> {
         return try {
             val data = productDataSource.getProducts().body()
