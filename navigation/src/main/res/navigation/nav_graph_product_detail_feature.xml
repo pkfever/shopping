@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_product_detail_feature"
+    app:startDestination="@id/detailFragment">
+
+    <!-- DETAIL FRAGMENT -->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.shopping.product.presenter.detail.DetailFragment"
+        android:label="ProductDetail">
+<!--
+           Go to Detail Fragment (Its graph is responsible to handle response)
+          <action android:id="@+id/action_homeFragment_to_detailFragment"
+              app:destination="@id/nav_graph_product_detail_feature">
+              <argument android:name="id" app:argType="string"/>
+          </action>-->
+
+    </fragment>
+
+</navigation>
