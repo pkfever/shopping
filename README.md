@@ -19,17 +19,13 @@
     * [feature modules]
     * [Android Architecture components]
 
-* Todo
+* Todo Items
+     Feature
+        Add cart functionality
 
-* Feature
-    Add cart functionality
-
-* Testing
-    * [Unit Tests]
-    * [Mockk] - mocking framework
-    * [UT Tests]
-      [Espresso]
-* UI
-    * [Material design](https://material.io/design)
-    * Reactive UI
+     Testing
+        * [Unit Tests]
+        * [Mockk] - mocking framework
+        * [UT Tests]
+        * [Espresso]
 
