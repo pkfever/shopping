@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val repositoryModule by lazy {
     module {
-        factory { ProductRepositoryImpl(get()) as ProductRepository }
+        factory { ProductRepositoryImpl(get())  }
     }
 }

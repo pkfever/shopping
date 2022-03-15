@@ -18,6 +18,10 @@ object Versions {
     const val retrofit = "2.8.1"
     const val lifecycle = "2.2.0"
     const val coil = "1.4.0"
+    const val archCoreTest = "2.1.0"
+    const val espressoCore = "3.4.0"
+    const val mockk = "1.9.3"
+    const val junitVersion = "5.7.0"
 }
 
 object AndroidLibraries {
@@ -62,4 +66,17 @@ object Libraries {
 object KotlinLibraries {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val kotlinCoroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+}
+
+object TestLibraries{
+    const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCoreTest}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+
+    // MOCK
+    const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val junitVersion = "org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}"
+
+    // COROUTINE
+    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 }

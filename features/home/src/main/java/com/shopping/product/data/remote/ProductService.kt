@@ -11,5 +11,5 @@ interface ProductService {
     suspend fun getProducts(): Response<List<Product>>
 
     @GET("products/{id}")
-    suspend fun getProductsDetail(@Path("id") id: String?,): Response<Product>
+    suspend fun getProductsDetail(@Path("id") id: String?): Response<Product>
 }

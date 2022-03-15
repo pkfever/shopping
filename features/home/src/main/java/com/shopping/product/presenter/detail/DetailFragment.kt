@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
-import com.shopping.product.R
+import com.shopping.common.base.BaseFragment
 import com.shopping.product.databinding.FragmentDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment() {
 
     private lateinit var detailBinding: FragmentDetailBinding
     private val productDetailViewModel: ProductDetailViewModel by viewModel()
