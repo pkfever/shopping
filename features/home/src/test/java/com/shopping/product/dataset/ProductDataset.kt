@@ -16,4 +16,6 @@ object ProductDataset {
             Rating(3.9, 120)
         )
     )
+
+    val FAKE_PRODUCT = FAKE_PRODUCTS[0]
 }

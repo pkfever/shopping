@@ -21,6 +21,7 @@ class ProductFragment : BaseFragment(), OnProductListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        addObserver()
     }
 
     override fun onCreateView(
@@ -36,7 +37,6 @@ class ProductFragment : BaseFragment(), OnProductListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        addObserver()
         homeBinding.run {
             productAdapter = ProductAdapter(this@ProductFragment)
             productRecyclerView.adapter = productAdapter
@@ -48,18 +48,18 @@ class ProductFragment : BaseFragment(), OnProductListener {
 
     private fun addObserver() {
 
-        productViewModel.productList.observe(viewLifecycleOwner, {
+        productViewModel.productList.observe(viewLifecycleOwner) {
             productAdapter.productList = it
-        })
+        }
 
-        productViewModel.error.observe(viewLifecycleOwner, {
+        productViewModel.error.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        })
+        }
 
-        productViewModel._loaderVisisble.observe(viewLifecycleOwner, {
+        productViewModel._loaderVisisble.observe(viewLifecycleOwner) {
             val visibility = if (it) View.VISIBLE else View.GONE
             homeBinding.productProgressBar.visibility = visibility
-        })
+        }
     }
 
     override fun onItemClick(product: Product) {

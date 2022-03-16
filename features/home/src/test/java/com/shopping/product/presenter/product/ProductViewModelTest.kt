@@ -2,10 +2,8 @@ package com.shopping.product.presenter.product
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.shopping.product.dataset.ProductDataset.FAKE_PRODUCTS
-import com.shopping.product.domain.repository.ProductRepository
 import com.shopping.product.domain.usecase.GetProductListUseCase
 import com.shopping.product.utils.MainCoroutineRule
-import com.shopping.product.utils.Resource
 import com.shopping.product.utils.getOrAwaitValue
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery

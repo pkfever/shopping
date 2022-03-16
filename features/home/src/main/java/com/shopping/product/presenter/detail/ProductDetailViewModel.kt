@@ -1,5 +1,6 @@
 package com.shopping.product.presenter.detail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.shopping.common.base.BaseViewModel
@@ -10,7 +11,8 @@ import kotlinx.coroutines.launch
 class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDetailUseCase) :
     BaseViewModel() {
 
-    val productLiveData = MutableLiveData<Product>()
+    private val _searchLiveData = MutableLiveData<Product>()
+    val productLiveData : LiveData<Product> = _searchLiveData
 
     init {
 
@@ -23,7 +25,8 @@ class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDeta
                 _loaderVisisble.value = false
                 when (result) {
                     is GetProductDetailUseCase.Result.Success -> {
-                        productLiveData.value = result.data
+//                        productLiveData.value = result.data
+                        _searchLiveData.postValue(result.data)
                     }
 
                     is GetProductDetailUseCase.Result.Error -> {

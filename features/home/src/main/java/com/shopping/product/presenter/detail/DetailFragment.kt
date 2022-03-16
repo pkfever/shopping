@@ -36,12 +36,12 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun addObserver() {
-        productDetailViewModel.productLiveData.observe(viewLifecycleOwner, { product ->
+        productDetailViewModel.productLiveData.observe(viewLifecycleOwner) { product ->
 
             detailBinding.productDescription.text = product.description
             detailBinding.productTitle.text = product.title
             detailBinding.productPrice.text = product.price
             detailBinding.productImage.load(product.image)
-        })
+        }
     }
 }

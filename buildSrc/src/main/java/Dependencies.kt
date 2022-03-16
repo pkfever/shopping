@@ -10,7 +10,7 @@ object Versions {
     const val material = "1.4.0"
     const val nav = "2.3.5"
     const val koin = "3.1.3"
-    const val coroutines = "1.3.5"
+    const val coroutines = "1.4.3"
     const val retrofitCoroutines = "0.9.2"
     const val retrofitGson = "2.8.1"
     const val gson = "2.8.6"
