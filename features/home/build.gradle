@@ -66,9 +66,7 @@ dependencies {
     androidTestImplementation TestLibraries.mockkAndroid
     testImplementation TestLibraries.mockk
     testImplementation TestLibraries.junitVersion
-
-//    implementation TestLibraries.coroutine
-    testImplementation  ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3") {
-//        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
-    }
+    testImplementation TestLibraries.turbine
+    testImplementation TestLibraries.google_truth
+    testImplementation TestLibraries.coroutine_test
 }

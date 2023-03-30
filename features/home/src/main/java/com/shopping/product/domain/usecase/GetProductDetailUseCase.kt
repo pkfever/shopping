@@ -11,7 +11,7 @@ class GetProductDetailUseCase(private val productRepository: ProductRepository) 
         data class Error(val errorMsg: String) : Result
     }
 
-    suspend fun execute(id: String?): Result {
+    suspend operator fun invoke(id: String?): Result {
 
         val resource = productRepository.getProductsById(id)
         return when (resource.status) {

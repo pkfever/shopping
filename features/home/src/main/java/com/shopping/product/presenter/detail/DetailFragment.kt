@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.shopping.common.base.BaseFragment
 import com.shopping.product.databinding.FragmentDetailBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : BaseFragment() {
@@ -36,12 +39,15 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun addObserver() {
-        productDetailViewModel.productLiveData.observe(viewLifecycleOwner) { product ->
 
-            detailBinding.productDescription.text = product.description
-            detailBinding.productTitle.text = product.title
-            detailBinding.productPrice.text = product.price
-            detailBinding.productImage.load(product.image)
+        viewLifecycleOwner.lifecycleScope.launch {
+            productDetailViewModel.product.collectLatest { product ->
+
+                detailBinding.productDescription.text = product.description
+                detailBinding.productTitle.text = product.title
+                detailBinding.productPrice.text = product.price
+                detailBinding.productImage.load(product.image)
+            }
         }
     }
 }

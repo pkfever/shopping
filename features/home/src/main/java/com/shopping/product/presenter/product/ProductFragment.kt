@@ -5,23 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shopping.common.base.BaseFragment
 import com.shopping.product.data.model.Product
 import com.shopping.product.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductFragment : BaseFragment(), OnProductListener {
+class ProductFragment : BaseFragment() {
 
     private lateinit var homeBinding: FragmentHomeBinding
     private val productViewModel: ProductViewModel by viewModel()
 
     private lateinit var productAdapter: ProductAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addObserver()
+
     }
 
     override fun onCreateView(
@@ -36,9 +38,9 @@ class ProductFragment : BaseFragment(), OnProductListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        addObserver()
         homeBinding.run {
-            productAdapter = ProductAdapter(this@ProductFragment)
+            productAdapter = ProductAdapter(::onItemClick)
             productRecyclerView.adapter = productAdapter
 
         }
@@ -48,8 +50,10 @@ class ProductFragment : BaseFragment(), OnProductListener {
 
     private fun addObserver() {
 
-        productViewModel.productList.observe(viewLifecycleOwner) {
-            productAdapter.productList = it
+        viewLifecycleOwner.lifecycleScope.launch {
+            productViewModel.productList.collectLatest {
+                productAdapter.productList = it
+            }
         }
 
         productViewModel.error.observe(viewLifecycleOwner) {
@@ -62,7 +66,7 @@ class ProductFragment : BaseFragment(), OnProductListener {
         }
     }
 
-    override fun onItemClick(product: Product) {
+    private fun onItemClick(product: Product) {
         findNavController().navigate(
             ProductFragmentDirections.actionHomeFragmentToDetailFragment(product.id)
         )

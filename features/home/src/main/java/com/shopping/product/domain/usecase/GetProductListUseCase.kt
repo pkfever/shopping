@@ -13,9 +13,9 @@ class GetProductListUseCase(private val productRepository: ProductRepository) {
     }
 
     /*
-        Handle app logics in here before sending the data to presnenter layer
+        Handle app logics in here before sending the data to presenter layer
      */
-    suspend fun execute(): Result {
+    suspend operator fun invoke(): Result {
 
         val resource = productRepository.getProducts()
         return when (resource.status) {

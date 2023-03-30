@@ -7,7 +7,7 @@ import com.shopping.product.databinding.ListItemProductBinding
 
 class ProductViewHolder(
     private val listItemProductBinding: ListItemProductBinding,
-    private val onProductListener: OnProductListener
+    private val onProductListener: (Product) -> Unit
 ) :
     RecyclerView.ViewHolder(listItemProductBinding.root) {
 
@@ -19,7 +19,7 @@ class ProductViewHolder(
         }
 
         listItemProductBinding.root.setOnClickListener {
-            onProductListener.onItemClick(product)
+            onProductListener(product)
         }
     }
 }

@@ -7,7 +7,7 @@ import com.shopping.product.data.model.Product
 import com.shopping.product.databinding.ListItemProductBinding
 import kotlin.properties.Delegates
 
-class ProductAdapter(val onProductListener: OnProductListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductAdapter( private val onProductListener: (Product) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var productList: List<Product> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()

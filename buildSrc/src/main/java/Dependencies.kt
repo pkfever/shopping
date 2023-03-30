@@ -4,7 +4,7 @@ object ApplicationId {
 
 object Versions {
     const val kotlin = "1.4.21"
-    const val appCompat = "1.2.0"
+    const val appCompat = "1.4.0"
     const val coreKtx = "1.2.0"
     const val constraintLayout = "2.1.1"
     const val material = "1.4.0"
@@ -22,6 +22,9 @@ object Versions {
     const val espressoCore = "3.4.0"
     const val mockk = "1.9.3"
     const val junitVersion = "5.7.0"
+    const val turbine = "0.12.1"
+    const val google_truth = "1.1.3"
+    const val coroutine_test = "1.6.0"
 }
 
 object AndroidLibraries {
@@ -79,4 +82,7 @@ object TestLibraries{
 
     // COROUTINE
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
+    const val google_truth = "com.google.truth:truth:${Versions.google_truth}"
+    const val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine_test}"
 }

@@ -1,15 +1,15 @@
 package com.shopping.product.presenter.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import app.cash.turbine.test
 import com.shopping.product.dataset.ProductDataset.FAKE_PRODUCT
 import com.shopping.product.domain.usecase.GetProductDetailUseCase
 import com.shopping.product.utils.MainCoroutineRule
-import com.shopping.product.utils.getOrAwaitValue
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -37,12 +37,16 @@ class ProductDetailViewModelTest {
     }
 
     @Test
-    fun `get product detail`() =
-        mainCoroutineRule.runBlockingTest {
+    fun `get product detail- Turbine`() =
+        runTest {
 
             val response = GetProductDetailUseCase.Result.Success(FAKE_PRODUCT)
-            coEvery { getProductDetailUseCase.execute("1") } returns response
-            productDetailViewModel.getProductDetail("1")
-            Assert.assertEquals(productDetailViewModel.productLiveData.getOrAwaitValue(), response.data)
+            coEvery { getProductDetailUseCase("1") } returns response
+
+            productDetailViewModel.product.test {
+                productDetailViewModel.getProductDetail("1")
+                Assert.assertEquals(awaitItem(), response.data)
+                cancelAndConsumeRemainingEvents()
+            }
         }
 }
